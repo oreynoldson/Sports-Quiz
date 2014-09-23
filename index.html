@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Quiz App</title>
+
+	<!-- Meta Tags -->
+	<meta charset="UTF-8">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/main.css"/> 
+	<!-- JavaScript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+</head>
+
+<body>
+	<div class="canvas">
+		
+		<header>
+				<h1 class="title">Sports Squares</h1>
+
+			<!--header links-->
+			<ul class="navLinks">
+				<li class="instructions">Instructions</li>
+				<li class="newGame">New Game</li>
+			</ul>
+			
+			<!--Overlay for game instructions-->
+			<div class="overlay">
+				<div class="overlayContent">
+					<h3>How To Play</h3>
+					<div>
+						<p>Click one one of the squares to choose a question</p>
+						<p>Choose one of the provided answers to the question</p>
+						<p>After choosing an answer you will then see the answer</p>
+						<a class="exit" href="#">Let's Get Started</a>
+					</div>
+				</div><!--end overlay content-->
+			</div><!--end overlay-->
+
+		</header>
+
+		<div class="main-container">
+			<!--Quiz Grid / Score-->
+			<div class="score">
+				<p>Score&#58;</p>
+			</div><!--end of score div-->
+
+			<section class="quizGridContain">
+			
+				<div class="quizGrid">
+					<div id ="boxOne" class="box"><p>1</p></div>
+					<div id ="boxTwo" class="box"><p>2</p></div>
+					<div id ="boxThree" class="box"><p>3</p></div>
+					<div id ="boxFour" class="box"><p>4</p></div>
+					<div id ="boxFive" class="box"><p>5</p></div>
+					<div id ="boxSix" class="box"><p>6</p></div>
+					<div id ="boxSeven" class="box"><p>7</p></div>
+					<div id ="boxEight" class="box"><p>8</p></div>
+					<div id ="boxNine" class="box"><p>9</p></div>	
+
+				</div><!--end quiz grid-->	
+
+					<!--question / answers-->
+					<div class="quizOverlay">
+						<div class="quizContent">
+							<p id="question"></p>
+							<ul id="answers">
+								<li id="ansA" class="ans"></li>
+								<li id="ansB" class="ans"></li>
+								<li id="ansC" class="ans"></li>
+								<li id="ansD" class="ans"></li>
+							</ul>
+						</div>
+						<div class="answerReveal">
+							<div class="quizContent">
+								<p id="rightWrong">Correct</p>
+								<p id="actualAnswer"></p>
+								<p id="ansDescription"></p>
+								<a class="exit" id="exitQuestion" href="#">Next Question</a>
+							</div>
+						</div>
+					</div><!--end of quiz Overlay-->
+
+			</section><!--end of quiz grid container-->
+		
+			<!--SORT OUT SCORE OVERLAY-->
+			<div class="scoreOverlay">
+				<div class="scoreContainer">
+				</div>
+			</div><!--end of end quiz score container-->
+
+		</div><!--end of main container-->
+
+	</div><!--end canvas div-->	
+</body>
+</html>

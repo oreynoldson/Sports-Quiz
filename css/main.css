@@ -1,0 +1,338 @@
+/*******************
+UTILITIES
+********************/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.canvas{
+	height: 100%;
+	width: 100%;
+}
+
+/*Main container not apply to header*/
+.main-container{
+	border: dashed 2px black;
+	height: 100%;/*convert back to 100% at the end*/
+	width: 90%;
+	padding: 5px;
+	margin: 0 auto;
+}
+
+/*******************
+TOP OF PAGE
+********************/
+
+header{
+	border: dashed 2px blue;
+	width: 100%;
+	height: 70px;
+	position: relative;
+	/*background-color: #425fb2;*/
+	margin: -1px;
+	padding: -1px;
+}
+
+.title{
+	text-align: center;
+	font-size: 3em;
+	padding: 5px;
+	color: ;
+}
+
+.navLinks{
+	font-size: 1.5em;
+}
+
+.instructions{
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-decoration: none;
+	margin: 20px 0 20px 20px;
+}
+
+.newGame{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 20px 20px 20px 0;
+}
+
+.navLinks > li:hover{
+	cursor: pointer;
+	font-weight: bold;
+	color: #425fb2;
+}
+
+.score{
+	border: dashed 2px red;
+	width:40%;
+	height:50px;
+	margin: 20px auto;
+	background-color: #ED1C24;
+}
+
+.score > p{
+	font-size: 2.3em;
+	margin-left: 20px;
+	padding: 5px;
+	text-transform: uppercase;
+}
+
+	/*******************
+	INSTRUCTIONS OVERLAY
+	********************/
+	/*Overlay for instructions*/
+	.overlay{
+		display: none;/*COMMENT OUT TO DISPLAY*/
+		position: absolute;
+		height: 550px;
+		width: 1225px;
+		background-color: coral;
+		z-index: 150;
+		top: 70px;
+		left: 70px;
+		border-radius: 20px;
+	}
+	/*Instructions for game*/
+	.overlayContent{
+		border: solid 4px #ea8d70;
+		width: 60%;
+		margin: 10px auto;
+		color: white;
+		padding: 10px 20px 0 20px;
+		margin-top: 60px;
+		border-radius: 10px;
+	}
+	/*Instructions heading*/
+	.overlayContent > h3{
+		text-align: center;
+		font-size: 4em;
+		margin: 20px;
+	}
+	/*Instructions text*/
+	.overlayContent > div{
+	text-align: center;
+	font-size: 2em;
+	}
+
+	.overlayContent > div > p{
+		margin-bottom: 20px;
+	}
+	/*Button to exit instructions back to main game*/
+	.exit{
+		text-decoration: none;
+		color: white;
+		background-color: #4EB1BA;
+		padding: 5px;
+		display: block;
+		width: 200px;
+		margin: 30px auto;
+	}
+	/*Hover effect for exit instructions button*/
+	.exit:hover{
+		cursor: pointer;
+		outline: solid 2px white;
+	}
+
+
+/*******************
+MIDDLE OF PAGE
+********************/
+/*Container for quiz grid/ question / answers / final score*/
+.quizGridContain{
+	border: dashed 2px red;
+	width: 60%;
+	height: 390px;
+	margin: 40px auto;
+	padding: 9px;
+	position: relative;
+}
+
+
+/*Main grid containing squares*/
+.quizGrid{
+	border: solid 2px black;
+	width: 690px;
+	height: 369px;
+	position: relative;
+}
+
+/*Targets all the squares*/
+.box{
+	border: solid 2px black;
+	position: absolute;
+	height: 123px;
+	width: 230px;
+	cursor: pointer;
+	background-color: #425fb2;
+}
+
+/*Targets all the numbers in the boxes*/
+.box > p{
+	font-size: 4em;
+	text-align: center;
+	padding: 25px;
+	color: #FFD500;
+	font-weight: bold;
+}
+
+.box:hover{
+	border: solid 3px red;
+}
+
+#boxOne{
+	top: 0;
+	left: 0;	
+}
+
+
+#boxTwo{
+	top: 0px;
+	left: 230px;	
+}
+
+#boxThree{
+	top: 0px;
+	left: 460px;	
+}
+
+#boxFour{
+	top: 123px;
+	left: 0px;	
+}
+
+#boxFive{
+	top: 123px;
+	left: 230px;	
+}
+
+#boxSix{
+	top: 123px;
+	left: 460px;	
+}
+
+#boxSeven{
+	top: 246px;
+	left: 0px;	
+}
+
+#boxEight{
+	top: 246px;
+	left: 230px;	
+}
+
+#boxNine{
+	top: 246px;
+	left: 460px;	
+}
+
+
+	/*******************
+	QUIZ OVERLAY
+	********************/
+	/*COMMENT OUT DISPLAY TO VIEW*/
+	.quizOverlay{
+		display: none;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-color: coral;
+		z-index: 125;
+		top: 0;
+		left: 0;
+
+	}
+
+	.quizContent{
+		border: dashed 2px blue;
+		width: 90%;
+		height: 100%;
+		position: relative;
+		padding: 5px;
+		margin: 0 35px;
+	}
+	/*Displays an overlay with the answer and if correct or not*/
+	.answerReveal{
+		display: none;
+		position: absolute;
+		height:100%;
+		width: 100%;
+		background-color: coral;
+		z-index: 100;
+		top: 0;
+		left: 0;
+	}
+
+	#rightWrong{
+		outline: 2px dashed black;
+		font-size: 4em;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	#actualAnswer{
+		outline: 2px dashed black;
+		font-size: 2em;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	#ansDescription{
+		outline: 2px dashed black;
+		font-size: 2em;
+		margin: 20px 20px 20px 20px;
+		text-align: center;
+	}
+
+	.quizContent > a{
+		text-align: center;
+		font-size: 1.5em;
+	}
+
+	/*Where the current question will be asked*/
+	#question{
+		display: block;
+		border: solid 3px black;
+		height: 120px;
+		font-size: 1.5em;
+		background-color: white;
+		border-radius: 10px;
+		padding: 10px 5px;
+		text-align: center;
+	}
+
+	#answers{
+		margin-top: 50px;
+	}
+	/*The list of available answers for the question*/
+	.ans{
+		
+		border: solid 2px black;
+		height: 40px;
+		margin-top: 10px;
+		font-size: 1.5em;
+		background-color: white;
+		border-radius: 10px;
+		text-align: center;
+		padding: 5px 10px;
+	}
+
+	/*Effect to show you are selecting that answer*/
+	.ans:hover{
+		cursor: pointer;
+		border: solid 4px red;
+	};
+
+
+	/*******************
+	END OF QUIZ SCORE OVERLAY
+	********************/
+	
+	/*FIX PROBLEMS WITH SCORE OVERLAY*/
