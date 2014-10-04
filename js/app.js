@@ -12,15 +12,31 @@ $(document).ready(function(){
 	});
 
 	//Display the question
-	$(".box").click(function(){
-		$(".quizOverlay").fadeIn(800);
-		lookForAvailableQuestion();
-	});
+	// $(".box").click(function(){
+	// 	$(".quizOverlay").fadeIn(800);
+	// 	lookForAvailableQuestion();
+	// });
+		//When the box is clicked call show question
+		document.getElementById("boxOne").onclick = showQuestion;
+		document.getElementById("boxTwo").onclick = showQuestion;
+		document.getElementById("boxThree").onclick = showQuestion;
+		document.getElementById("boxFour").onclick = showQuestion;
+		document.getElementById("boxFive").onclick = showQuestion;
+		document.getElementById("boxSix").onclick = showQuestion;
+		document.getElementById("boxSeven").onclick = showQuestion;
+		document.getElementById("boxEight").onclick = showQuestion;
+		document.getElementById("boxNine").onclick = showQuestion;
 
 	//Display the answer
-	$(".ans").click(function(){
-		$(".answerReveal").fadeIn(200);
-	});
+	// $(".ans").click(function(){
+		// $(".answerReveal").fadeIn(200);
+		//Clicking on the choice calls the check answer function
+		//And displays the answer section
+		document.getElementById("ansA").onclick = checkAnswer;
+		document.getElementById("ansB").onclick = checkAnswer;
+		document.getElementById("ansC").onclick = checkAnswer;
+		document.getElementById("ansD").onclick = checkAnswer;
+	// });
 
 	//clear the child nodes from the document
 	$("#exitexitQuestion").click(function(){
@@ -28,63 +44,114 @@ $(document).ready(function(){
 	})
 
 	
-	/*Displays random question*/
+});//End of document ready function
+
+/************************************************************
+	FUNCTIONS
+************************************************************/
+//Display question and choices
+function showQuestion(){
+	$(".quizOverlay").fadeIn(800);
+	lookForAvailableQuestion();
+	//stores the box clicked on ID in the variable
+	var getId = this.id;
+	//Makes the variable storing the id of box clicked on global
+	globIdVar = getId;
+	console.log(globIdVar);
+	//J-query version to get the specifc box clicked id and make global var
+	// var boxClicked = $(this).attr("id");
+	//The id is stored as a string in the variable
+	// globalBoxId = "#" + boxClicked;
+}
+
+/*Displays random question*/
 	function lookForAvailableQuestion(){
 
 		//Selects random number to choose question
 		var i = Math.floor(Math.random() * quiz.length);
 
 		/*Add Questions to the page*/
-		var question = document.getElementById("question");
-		var questionTxt = document.createTextNode(quiz[i].question);
-		question.appendChild(questionTxt);
+		document.getElementById("question").display="block";
+		document.getElementById("question").innerHTML = quiz[i].question;
+		/*Add Option 1 to the page*/
+		document.getElementById("ansA").display="block";
+		document.getElementById("ansA").innerHTML = quiz[i].choice1;
 
-		/*Add Answer options to the page*/
-		var option1 = document.getElementById("ansA");
-		var option1Txt = document.createTextNode(quiz[i].choice1);
-		option1.appendChild(option1Txt);
-
-		var option2 = document.getElementById("ansB");
-		var option2Txt = document.createTextNode(quiz[i].choice2);
-		option2.appendChild(option2Txt);
-
-		var option3 = document.getElementById("ansC");
-		var option3Txt = document.createTextNode(quiz[i].choice3);
-		option3.appendChild(option3Txt);
-
-		var option4 = document.getElementById("ansD");
-		var option4Txt = document.createTextNode(quiz[i].choice4);
-		option4.appendChild(option4Txt);
+		/*Add Option 2 to the page*/
+		document.getElementById("ansB").display="block";
+		document.getElementById("ansB").innerHTML = quiz[i].choice2;
+		/*Add Option 3 to the page*/
+		document.getElementById("ansC").display="block";
+		document.getElementById("ansC").innerHTML = quiz[i].choice3;
+		/*Add Option 4 to the page*/
+		document.getElementById("ansD").display="block";
+		document.getElementById("ansD").innerHTML = quiz[i].choice4;
 
 		/*Add The Answer*/
-		var correctAns = document.getElementById("actualAnswer");
-		var correctAnsTxt = document.createTextNode(quiz[i].answer);
-		correctAns.appendChild(correctAnsTxt);
+		document.getElementById("actualAnswer").display="block";
+		document.getElementById("actualAnswer").innerHTML = quiz[i].answer;
+
+		/*Put the answer for the variable in a global variable*/
+		//Use the global variable to check against the choice selected
+		var getAns = document.getElementById("actualAnswer").innerHTML = quiz[i].answer;
+		// console.log(getAns);
+		globalAnsVar = getAns;
 
 		/*Add the answer description*/
-		var answerDesc = document.getElementById("ansDescription");
-		var ansDescTxt = document.createTextNode(quiz[i].ansDescription);
-		answerDesc.appendChild(ansDescTxt);
+		document.getElementById("ansDescription").display="block";
+		document.getElementById("ansDescription").innerHTML = quiz[i].ansDescription;
+
 
 		/*Take question object out of quiz array so can't be used again*/
 		quiz.splice(i, 1);
 
 	};//end of look for available question function
 
-	function nextQuestion(){
-		if(questionTxt.parentNode){
-			questionTxt.parentNode.removeChild(questionTxt);
-		}
-	}
 
-});//End of document ready function
+	/*Makes sure the spaces for questions and answers are cleared*/
+	function nextQuestion(){
+		document.getElementById("question").innerHTML = " "
+	};
+
+
+	/*Moves ontoCheck Answer is correct*/
+	function checkAnswer(){
+		/*Check to see if this is improper useage*/
+		$(".answerReveal").fadeIn(200);
+		//stores the user choice for question
+		var choice = this.innerHTML;
+		
+		//Check choice against answer for the question
+		//If correct
+		if(choice == globalAnsVar){
+			//Iserts correct into HTML on results page
+			document.getElementById("rightWrong").display="block";
+			document.getElementById("rightWrong").innerHTML = "Correct";
+
+			//Show the tick icon over the box and hide the number
+			// var numberClass = getElementByClassName("number");
+			// var checkmarkClass = getElementByClassName("icon-checkmark");
+			$(".number:eq(0)").hide();
+			// $(".icon-checkmark").show();
+			// document.getElementById(globIdVar).display = ".number {display: none;}"
+			// document.getElementById(globIdVar).innerHTML = ".icon-checkmar {display: block;}"
+			
+		} else {
+			//Inserts incorrect into HTML on results page
+			document.getElementById("rightWrong").display="block";
+			document.getElementById("rightWrong").innerHTML = "Incorrect";
+		}
+	}//end check answer
+	
+	/*If click the div with corresponding ID */
+	
 
 /************************************************************
 	QUIZ OBJECTS
 ************************************************************/
 
 /* OBJECT CONSTRUCTOR*/
-function question(question, choice1, choice2, choice3, choice4, answer, ansDescription, chosen){
+function question(question, choice1, choice2, choice3, choice4, answer, ansDescription){
 	this.question = question;
 	this.choice1 = choice1;
 	this.choice2 = choice2;
@@ -92,7 +159,6 @@ function question(question, choice1, choice2, choice3, choice4, answer, ansDescr
 	this.choice4 = choice4;
 	this.answer = answer;
 	this.ansDescription = ansDescription;
-	this.chosen = true;
 };//end of object constructor
 
 /*CREATE AN ARRAY FOR NEW QUESTION OBJECTS*/

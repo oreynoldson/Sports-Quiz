@@ -233,6 +233,17 @@ MIDDLE OF PAGE
 	left: 460px;	
 }
 
+/*Hides the icon font for incorrect*/
+.icon-close{
+	display: none;
+}
+
+/*Hides the icon font for correct*/
+.icon-checkmark{
+	display: none;
+}
+
+
 
 	/*******************
 	QUIZ OVERLAY
