@@ -53,11 +53,13 @@ $(document).ready(function(){
 function showQuestion(){
 	$(".quizOverlay").fadeIn(800);
 	lookForAvailableQuestion();
+
+	//Work out how to disable the click function onclick for the box
+	// $(this.id).click("false");
 	//stores the box clicked on ID in the variable
 	var getId = this.id;
 	//Makes the variable storing the id of box clicked on global
-	globIdVar = getId;
-	console.log(globIdVar);
+	globIdVar = "#" + getId;
 	//J-query version to get the specifc box clicked id and make global var
 	// var boxClicked = $(this).attr("id");
 	//The id is stored as a string in the variable
@@ -124,22 +126,31 @@ function showQuestion(){
 		//Check choice against answer for the question
 		//If correct
 		if(choice == globalAnsVar){
+			var rightWrongId = document.getElementById("rightWrong");
+			rightWrongId.display="block";
+			/*Adds class green to make correct green color*/
+			rightWrongId.className += " green";
 			//Iserts correct into HTML on results page
-			document.getElementById("rightWrong").display="block";
-			document.getElementById("rightWrong").innerHTML = "Correct";
+			rightWrongId.innerHTML = "Correct";
+
 
 			//Show the tick icon over the box and hide the number
 			// var numberClass = getElementByClassName("number");
 			// var checkmarkClass = getElementByClassName("icon-checkmark");
-			$(".number:eq(0)").hide();
+			// $(globIdVar).closest("p").addClass("icon-checkmark");
+			// $(".number:eq(0)").hide();
 			// $(".icon-checkmark").show();
 			// document.getElementById(globIdVar).display = ".number {display: none;}"
 			// document.getElementById(globIdVar).innerHTML = ".icon-checkmar {display: block;}"
-			
+			$(globIdVar).css( "background-color", "green" );
 		} else {
+			rightWrongId.display="block";
+			/*Adds class red to make incorrect red color*/
+			rightWrongId.className += " red";
 			//Inserts incorrect into HTML on results page
-			document.getElementById("rightWrong").display="block";
-			document.getElementById("rightWrong").innerHTML = "Incorrect";
+			rightWrongId.innerHTML = "Incorrect";
+
+			$(globIdVar).css( "background-color", "red" );
 		}
 	}//end check answer
 	

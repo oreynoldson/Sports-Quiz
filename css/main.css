@@ -13,15 +13,17 @@ UTILITIES
 .canvas{
 	height: 100%;
 	width: 100%;
+	background-color: #7647a2;
 }
 
 /*Main container not apply to header*/
 .main-container{
-	border: dashed 2px black;
+	/*border: dashed 2px black;*/
 	height: 100%;/*convert back to 100% at the end*/
 	width: 90%;
 	padding: 5px;
 	margin: 0 auto;
+	background-color: #7647a2;
 }
 
 /*******************
@@ -29,20 +31,24 @@ TOP OF PAGE
 ********************/
 
 header{
-	border: dashed 2px blue;
+	/*border: dashed 2px blue;*/
 	width: 100%;
 	height: 70px;
 	position: relative;
-	/*background-color: #425fb2;*/
+	background-color: #7647a2;
+	/*Make sure theheader dosent show any gaps*/
 	margin: -1px;
 	padding: -1px;
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	border-bottom: solid 2px white;
 }
 
 .title{
 	text-align: center;
 	font-size: 3em;
-	padding: 5px;
-	color: ;
+	padding: 7px;
+	text-transform: uppercase;
 }
 
 .navLinks{
@@ -66,22 +72,28 @@ header{
 
 .navLinks > li:hover{
 	cursor: pointer;
-	font-weight: bold;
-	color: #425fb2;
+	color: #a5a5a5;
 }
 
 .score{
-	border: dashed 2px red;
+	border: solid 6px #08b24f;
 	width:40%;
-	height:50px;
+	/*Adjusted this to 71px to increase height of canvas*/
+	/*And get rid of white space at bottom of canvas*/
+	height: 71px;
 	margin: 20px auto;
-	background-color: #ED1C24;
+	background-color: #cef8df;
+	font-weight: bold;
+	color: #a5a5a5;
+	border-radius: 30px;
+	font-family: 'Stint Ultra Expanded', cursive;
+
 }
 
 .score > p{
-	font-size: 2.3em;
+	font-size: 2em;
 	margin-left: 20px;
-	padding: 5px;
+	padding: 15px;
 	text-transform: uppercase;
 }
 
@@ -94,7 +106,7 @@ header{
 		position: absolute;
 		height: 550px;
 		width: 1225px;
-		background-color: coral;
+		background-color: #7647a2;
 		z-index: 150;
 		top: 70px;
 		left: 70px;
@@ -103,11 +115,12 @@ header{
 	/*Instructions for game*/
 	.overlayContent{
 		border: solid 4px #ea8d70;
-		width: 60%;
-		margin: 10px auto;
+		width: 75%;
+		height: 400px;
+		margin: 0 auto;
 		color: white;
 		padding: 10px 20px 0 20px;
-		margin-top: 60px;
+		margin-top: 80px;
 		border-radius: 10px;
 	}
 	/*Instructions heading*/
@@ -129,16 +142,18 @@ header{
 	.exit{
 		text-decoration: none;
 		color: white;
-		background-color: #4EB1BA;
+		background-color: black;
 		padding: 5px;
 		display: block;
 		width: 200px;
 		margin: 30px auto;
+		border-radius: 10px;
 	}
 	/*Hover effect for exit instructions button*/
 	.exit:hover{
 		cursor: pointer;
-		outline: solid 2px white;
+		border-radius: 10px;
+		border: solid 2px white;
 	}
 
 
@@ -147,7 +162,7 @@ MIDDLE OF PAGE
 ********************/
 /*Container for quiz grid/ question / answers / final score*/
 .quizGridContain{
-	border: dashed 2px red;
+	/*border: dashed 2px red;*/
 	width: 60%;
 	height: 390px;
 	margin: 40px auto;
@@ -166,12 +181,12 @@ MIDDLE OF PAGE
 
 /*Targets all the squares*/
 .box{
-	border: solid 2px black;
+	border: solid 3px black;
 	position: absolute;
 	height: 123px;
 	width: 230px;
 	cursor: pointer;
-	background-color: #425fb2;
+	background-color: #06853b;
 }
 
 /*Targets all the numbers in the boxes*/
@@ -180,11 +195,11 @@ MIDDLE OF PAGE
 	text-align: center;
 	padding: 25px;
 	color: #FFD500;
-	font-weight: bold;
+	font-family: 'Stint Ultra Expanded', cursive;
 }
 
 .box:hover{
-	border: solid 3px red;
+	border: solid 3px #FFD500;
 }
 
 #boxOne{
@@ -244,7 +259,6 @@ MIDDLE OF PAGE
 }
 
 
-
 	/*******************
 	QUIZ OVERLAY
 	********************/
@@ -254,7 +268,7 @@ MIDDLE OF PAGE
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		background-color: coral;
+		background-color: #06853b;
 		z-index: 125;
 		top: 0;
 		left: 0;
@@ -262,12 +276,14 @@ MIDDLE OF PAGE
 	}
 
 	.quizContent{
-		border: dashed 2px blue;
+		/*border: dashed 2px blue;*/
 		width: 90%;
 		height: 100%;
 		position: relative;
 		padding: 5px;
 		margin: 0 35px;
+		font-family: 'Raleway', sans-serif;
+		color: #7647a2;
 	}
 	/*Displays an overlay with the answer and if correct or not*/
 	.answerReveal{
@@ -275,29 +291,44 @@ MIDDLE OF PAGE
 		position: absolute;
 		height:100%;
 		width: 100%;
-		background-color: coral;
+		background-color: #06853b;
 		z-index: 100;
 		top: 0;
 		left: 0;
 	}
 
 	#rightWrong{
-		outline: 2px dashed black;
-		font-size: 4em;
+		border: solid 8px #a5a5a5;
+		border-radius: 10px;
+		background-color: #dbdbdb;
+		font-size: 3em;
 		text-align: center;
 		margin-top: 10px;
+	}
+	/*Created class to make correct green and add using js*/
+	.green{
+		color: green;
+	}
+	/*Created class to make incorrect red and add using js*/
+	.red{
+		color: red;
 	}
 
 	#actualAnswer{
-		outline: 2px dashed black;
+		border: solid 4px #a5a5a5;
+		border-radius: 10px;
+		width: 400px;
+		background-color: #dbdbdb;
 		font-size: 2em;
 		text-align: center;
-		margin-top: 10px;
+		margin: 10px auto;
 	}
 
 	#ansDescription{
-		outline: 2px dashed black;
-		font-size: 2em;
+		border: solid 4px #a5a5a5;
+		border-radius: 10px;
+		background-color: #dbdbdb;
+		font-size: 1.5em;
 		margin: 20px 20px 20px 20px;
 		text-align: center;
 	}
@@ -310,13 +341,15 @@ MIDDLE OF PAGE
 	/*Where the current question will be asked*/
 	#question{
 		display: block;
-		border: solid 3px black;
-		height: 120px;
+		border: solid 8px #a5a5a5;
+		/*height: 120px;*/
 		font-size: 1.5em;
 		background-color: white;
 		border-radius: 10px;
 		padding: 10px 5px;
 		text-align: center;
+		background-color: #dbdbdb;
+		margin-top: 20px;
 	}
 
 	#answers{
@@ -325,7 +358,7 @@ MIDDLE OF PAGE
 	/*The list of available answers for the question*/
 	.ans{
 		
-		border: solid 2px black;
+		border: solid 3px #a5a5a5;
 		height: 40px;
 		margin-top: 10px;
 		font-size: 1.5em;
@@ -333,14 +366,14 @@ MIDDLE OF PAGE
 		border-radius: 10px;
 		text-align: center;
 		padding: 5px 10px;
+		background-color: #dbdbdb;
 	}
 
 	/*Effect to show you are selecting that answer*/
 	.ans:hover{
 		cursor: pointer;
-		border: solid 4px red;
+		border: solid 4px #FFD500;
 	};
-
 
 	/*******************
 	END OF QUIZ SCORE OVERLAY
