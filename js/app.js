@@ -58,11 +58,12 @@ $(document).ready(function(){
 /***********************************
 	ARRAY FOR KEEPING SCORE
 ************************************/
+	
 	var scoreArray = [];
-
+	globalScoreArray = scoreArray;
 	var scoreLength = scoreArray.length;
-	globalScoreVar = scoreLength
-	$("#score").text(scoreLength);
+	globalScoreLength = scoreLength;
+	
 
 	//create function to update the score on correct answer
 	// function keepScore(correct){
@@ -73,6 +74,8 @@ $(document).ready(function(){
 	// };
 	
 });//End of document ready function
+
+
 
 
 /************************************************************
@@ -199,7 +202,8 @@ function showQuestion(){
 			
 
 			//Push number to array to update score
-			// scoreArray.push(1);
+			globalScoreArray.push(1);
+			$("#score").text(globalScoreLength);
 			// keepScore(1);
 
 		} else {
