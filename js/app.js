@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+/************************************************************
+	JQUERY DOM INTERACTION
+************************************************************/
+
 	//Trigger the Instructions overlay
 	$(".instructions").click(function(){
 		$(".overlay").fadeIn(800);
@@ -10,6 +14,10 @@ $(document).ready(function(){
 		$(".overlay").fadeOut(1000);
 		$(".answerReveal, .quizOverlay").fadeOut(400);
 	});
+
+/***********************************
+	DISPLAY QUESTION
+************************************/
 
 	//Display the question
 	// $(".box").click(function(){
@@ -27,6 +35,10 @@ $(document).ready(function(){
 		document.getElementById("boxEight").onclick = showQuestion;
 		document.getElementById("boxNine").onclick = showQuestion;
 
+/***********************************
+	DISPLAY ANSWER
+************************************/
+
 	//Display the answer
 	// $(".ans").click(function(){
 		// $(".answerReveal").fadeIn(200);
@@ -41,30 +53,63 @@ $(document).ready(function(){
 	//clear the child nodes from the document
 	$("#exitexitQuestion").click(function(){
 		nextQuestion();
-	})
+	});
 
+/***********************************
+	ARRAY FOR KEEPING SCORE
+************************************/
+	var scoreArray = [];
+
+	var scoreLength = scoreArray.length;
+	globalScoreVar = scoreLength
+	$("#score").text(scoreLength);
+
+	//create function to update the score on correct answer
+	// function keepScore(correct){
+	// 	var currentScore = $("#score").text(0);
+	// 	var newScore = parseInt(currentScore, 10) + correct;
+	// 	$("#score").text(newScore);
+	// 	return newScore;
+	// };
 	
 });//End of document ready function
+
 
 /************************************************************
 	FUNCTIONS
 ************************************************************/
+
+/***********************************
+	FADE IN QUESTION / CALL FUNCTION
+	TO FIND QUESTION / STORE ID OF
+	BOX CLICKED ON IN GLOBAL VARIABLE
+************************************/
+
 //Display question and choices
 function showQuestion(){
 	$(".quizOverlay").fadeIn(800);
 	lookForAvailableQuestion();
 
+	//ISSUE
 	//Work out how to disable the click function onclick for the box
 	// $(this.id).click("false");
+
+	//JAVASCRIPT
 	//stores the box clicked on ID in the variable
 	var getId = this.id;
 	//Makes the variable storing the id of box clicked on global
 	globIdVar = "#" + getId;
+
+	//J-QUERY
 	//J-query version to get the specifc box clicked id and make global var
 	// var boxClicked = $(this).attr("id");
 	//The id is stored as a string in the variable
 	// globalBoxId = "#" + boxClicked;
 }
+
+/***********************************
+	ADDS VALUES FROM OBJECTS TO HTML
+************************************/
 
 /*Displays random question*/
 	function lookForAvailableQuestion(){
@@ -109,12 +154,20 @@ function showQuestion(){
 
 	};//end of look for available question function
 
+/***********************************
+	CLEARS CONTAINERS OF PREVIOUS QUESTION
+************************************/
 
 	/*Makes sure the spaces for questions and answers are cleared*/
 	function nextQuestion(){
 		document.getElementById("question").innerHTML = " "
 	};
 
+/***********************************
+	CHECKS ANSWER / FADES IN ANSWER
+	SECTION / CHANGE BOX STYLE 
+	DEPENDING ON ANSWER
+************************************/
 
 	/*Moves ontoCheck Answer is correct*/
 	function checkAnswer(){
@@ -122,40 +175,44 @@ function showQuestion(){
 		$(".answerReveal").fadeIn(200);
 		//stores the user choice for question
 		var choice = this.innerHTML;
-		
+		//store rightWrong id in variable
+		var rightWrongId = document.getElementById("rightWrong");
 		//Check choice against answer for the question
 		//If correct
 		if(choice == globalAnsVar){
-			var rightWrongId = document.getElementById("rightWrong");
+			
 			rightWrongId.display="block";
 			/*Adds class green to make correct green color*/
 			rightWrongId.className += " green";
 			//Iserts correct into HTML on results page
 			rightWrongId.innerHTML = "Correct";
 
-
 			//Show the tick icon over the box and hide the number
 			// var numberClass = getElementByClassName("number");
 			// var checkmarkClass = getElementByClassName("icon-checkmark");
 			// $(globIdVar).closest("p").addClass("icon-checkmark");
 			// $(".number:eq(0)").hide();
-			// $(".icon-checkmark").show();
 			// document.getElementById(globIdVar).display = ".number {display: none;}"
 			// document.getElementById(globIdVar).innerHTML = ".icon-checkmar {display: block;}"
+			/*NOT WHAT I WANTED - cant traverse DOM from globIdVar*/
 			$(globIdVar).css( "background-color", "green" );
+			
+
+			//Push number to array to update score
+			// scoreArray.push(1);
+			// keepScore(1);
+
 		} else {
+
 			rightWrongId.display="block";
 			/*Adds class red to make incorrect red color*/
 			rightWrongId.className += " red";
 			//Inserts incorrect into HTML on results page
 			rightWrongId.innerHTML = "Incorrect";
-
+			/*NOT WHAT I WANTED - cant traverse DOM from globIdVar*/
 			$(globIdVar).css( "background-color", "red" );
-		}
+		}//end if else statement
 	}//end check answer
-	
-	/*If click the div with corresponding ID */
-	
 
 /************************************************************
 	QUIZ OBJECTS

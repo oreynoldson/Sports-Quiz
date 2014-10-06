@@ -248,6 +248,9 @@ MIDDLE OF PAGE
 	left: 460px;	
 }
 
+/*.number{
+	display: none;
+}*/
 /*Hides the icon font for incorrect*/
 .icon-close{
 	display: none;
