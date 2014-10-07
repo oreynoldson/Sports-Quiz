@@ -199,12 +199,14 @@ function showQuestion(){
 			// document.getElementById(globIdVar).innerHTML = ".icon-checkmar {display: block;}"
 			/*NOT WHAT I WANTED - cant traverse DOM from globIdVar*/
 			$(globIdVar).css( "background-color", "green" );
+			$(globIdVar).click(fucntion(){
+				return:false;
+			})
 			
-
 			//Push number to array to update score
 			globalScoreArray.push(1);
-			$("#score").text(globalScoreLength);
-			// keepScore(1);
+			globalScoreLength = globalScoreArray.length;
+			$("#scoreSpan").text(globalScoreLength);
 
 		} else {
 
@@ -223,6 +225,7 @@ function showQuestion(){
 ************************************************************/
 
 /* OBJECT CONSTRUCTOR*/
+//this.question = pquestion;
 function question(question, choice1, choice2, choice3, choice4, answer, ansDescription){
 	this.question = question;
 	this.choice1 = choice1;
@@ -231,6 +234,7 @@ function question(question, choice1, choice2, choice3, choice4, answer, ansDescr
 	this.choice4 = choice4;
 	this.answer = answer;
 	this.ansDescription = ansDescription;
+	// this.score = score;
 };//end of object constructor
 
 /*CREATE AN ARRAY FOR NEW QUESTION OBJECTS*/
@@ -243,6 +247,7 @@ var quiz = [{
 	choice4: 8,
 	answer: 4,
 	ansDescription: "Lewis won nine Olympic gold medals in all: four in 1984 (100m, 200m, 4x100m, long jump), two in 1988 (100m and long jump), two in 1992 (4x100m and long jump), and one in 1996 (long jump)." 
+	//score: -1;
 }, {
 	//question 2 index = 1
 	question: "In the NFL, who holds the record for the most yards gained in a single season?",
