@@ -187,6 +187,7 @@ MIDDLE OF PAGE
 	width: 230px;
 	cursor: pointer;
 	background-color: #06853b;
+	font-family: 'Stint Ultra Expanded', cursive;
 }
 
 /*Targets all the numbers in the boxes*/
@@ -195,7 +196,6 @@ MIDDLE OF PAGE
 	text-align: center;
 	padding: 25px;
 	color: #FFD500;
-	font-family: 'Stint Ultra Expanded', cursive;
 }
 
 .box:hover{
@@ -248,19 +248,32 @@ MIDDLE OF PAGE
 	left: 460px;	
 }
 
+/*Used to test whether the icon fonts are working or not*/
+
 /*.number{
 	display: none;
 }*/
-/*Hides the icon font for incorrect*/
-.icon-close{
-	display: none;
-}
 
 /*Hides the icon font for correct*/
-.icon-checkmark{
+/*.icon-checkmark{
 	display: none;
+}*/
+
+/*Hides the icon font for incorrect*/
+/*.icon-close{
+	display: none;
+}*/
+
+
+/*Changes the background color for the boxes on right or wrong answers*/
+
+.green-background{
+	background-color: green;
 }
 
+.red-background{
+	background-color: red;
+}
 
 	/*******************
 	QUIZ OVERLAY

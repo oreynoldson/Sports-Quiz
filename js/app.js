@@ -61,17 +61,9 @@ $(document).ready(function(){
 	
 	var scoreArray = [];
 	globalScoreArray = scoreArray;
+
 	var scoreLength = scoreArray.length;
 	globalScoreLength = scoreLength;
-	
-
-	//create function to update the score on correct answer
-	// function keepScore(correct){
-	// 	var currentScore = $("#score").text(0);
-	// 	var newScore = parseInt(currentScore, 10) + correct;
-	// 	$("#score").text(newScore);
-	// 	return newScore;
-	// };
 	
 });//End of document ready function
 
@@ -161,9 +153,11 @@ function showQuestion(){
 	CLEARS CONTAINERS OF PREVIOUS QUESTION
 ************************************/
 
-	/*Makes sure the spaces for questions and answers are cleared*/
 	function nextQuestion(){
-		document.getElementById("question").innerHTML = " "
+		/*Makes sure the spaces for questions and answers are cleared*/
+		document.getElementById("question").innerHTML = " ";
+		//clears red or green class from right or wrong section
+		$(rightWrongId).removeClass();
 	};
 
 /***********************************
@@ -184,39 +178,40 @@ function showQuestion(){
 		//If correct
 		if(choice == globalAnsVar){
 			
+			//Adds green correct when display answer
 			rightWrongId.display="block";
 			/*Adds class green to make correct green color*/
 			rightWrongId.className += " green";
 			//Iserts correct into HTML on results page
 			rightWrongId.innerHTML = "Correct";
 
-			//Show the tick icon over the box and hide the number
-			// var numberClass = getElementByClassName("number");
-			// var checkmarkClass = getElementByClassName("icon-checkmark");
-			// $(globIdVar).closest("p").addClass("icon-checkmark");
-			// $(".number:eq(0)").hide();
-			// document.getElementById(globIdVar).display = ".number {display: none;}"
-			// document.getElementById(globIdVar).innerHTML = ".icon-checkmar {display: block;}"
-			/*NOT WHAT I WANTED - cant traverse DOM from globIdVar*/
-			$(globIdVar).css( "background-color", "green" );
-			$(globIdVar).click(fucntion(){
-				return:false;
-			})
+			//Adds green background to the box on correct answer
+			$(globIdVar).addClass("green-background");
+			//Removes the nested p with the class number to remove the number 
+			$(globIdVar).children(".number").remove();
+			//Adds a icon font to the remaining p below which add tick to box
+			$(globIdVar).children("p").addClass("icon-checkmark");
+			// $(globIdVar).children("p").addClass("icon-checkmark");
 			
-			//Push number to array to update score
+			//Push number to array to update score on correct answer
 			globalScoreArray.push(1);
 			globalScoreLength = globalScoreArray.length;
 			$("#scoreSpan").text(globalScoreLength);
 
 		} else {
 
+			//Adds red incorrect when display answer
 			rightWrongId.display="block";
 			/*Adds class red to make incorrect red color*/
 			rightWrongId.className += " red";
 			//Inserts incorrect into HTML on results page
 			rightWrongId.innerHTML = "Incorrect";
-			/*NOT WHAT I WANTED - cant traverse DOM from globIdVar*/
-			$(globIdVar).css( "background-color", "red" );
+			//Adds red background to the box selected if incorrect
+			$(globIdVar).addClass("red-background");
+			//Removes the nested p with the class number to remove the number 
+			$(globIdVar).children(".number").remove();
+			//Adds a icon font to the remaining p below which add cross to box
+			$(globIdVar).children("p").addClass("icon-close");
 		}//end if else statement
 	}//end check answer
 
