@@ -20,20 +20,16 @@ $(document).ready(function(){
 ************************************/
 
 	//Display the question
-	// $(".box").click(function(){
-	// 	$(".quizOverlay").fadeIn(800);
-	// 	lookForAvailableQuestion();
-	// });
-		//When the box is clicked call show question
-		document.getElementById("boxOne").onclick = showQuestion;
-		document.getElementById("boxTwo").onclick = showQuestion;
-		document.getElementById("boxThree").onclick = showQuestion;
-		document.getElementById("boxFour").onclick = showQuestion;
-		document.getElementById("boxFive").onclick = showQuestion;
-		document.getElementById("boxSix").onclick = showQuestion;
-		document.getElementById("boxSeven").onclick = showQuestion;
-		document.getElementById("boxEight").onclick = showQuestion;
-		document.getElementById("boxNine").onclick = showQuestion;
+	//When the box is clicked call show question
+	document.getElementById("boxOne").onclick = showQuestion;
+	document.getElementById("boxTwo").onclick = showQuestion;
+	document.getElementById("boxThree").onclick = showQuestion;
+	document.getElementById("boxFour").onclick = showQuestion;
+	document.getElementById("boxFive").onclick = showQuestion;
+	document.getElementById("boxSix").onclick = showQuestion;
+	document.getElementById("boxSeven").onclick = showQuestion;
+	document.getElementById("boxEight").onclick = showQuestion;
+	document.getElementById("boxNine").onclick = showQuestion;
 
 /***********************************
 	DISPLAY ANSWER
@@ -51,7 +47,7 @@ $(document).ready(function(){
 	// });
 
 	//clear the child nodes from the document
-	$("#exitexitQuestion").click(function(){
+	$("#exitQuestion").click(function(){
 		nextQuestion();
 	});
 
@@ -85,15 +81,15 @@ function showQuestion(){
 	$(".quizOverlay").fadeIn(800);
 	lookForAvailableQuestion();
 
-	//ISSUE
-	//Work out how to disable the click function onclick for the box
-	// $(this.id).click("false");
-
 	//JAVASCRIPT
 	//stores the box clicked on ID in the variable
 	var getId = this.id;
 	//Makes the variable storing the id of box clicked on global
 	globIdVar = "#" + getId;
+
+	//ISSUE
+	//Work out how to disable the click function onclick for the box
+	// document.getElementById(globIdVar).style.pointerEvents = 'none';
 
 	//J-QUERY
 	//J-query version to get the specifc box clicked id and make global var
@@ -157,7 +153,8 @@ function showQuestion(){
 		/*Makes sure the spaces for questions and answers are cleared*/
 		document.getElementById("question").innerHTML = " ";
 		//clears red or green class from right or wrong section
-		$(rightWrongId).removeClass();
+		//makes sure class dosent carry over to next section
+		$("#rightWrong").removeClass();
 	};
 
 /***********************************
