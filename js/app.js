@@ -21,6 +21,7 @@ $(document).ready(function(){
 
 	//Display the question
 	//When the box is clicked call show question
+
 	document.getElementById("boxOne").onclick = showQuestion;
 	document.getElementById("boxTwo").onclick = showQuestion;
 	document.getElementById("boxThree").onclick = showQuestion;
@@ -89,7 +90,20 @@ function showQuestion(){
 
 	//ISSUE
 	//Work out how to disable the click function onclick for the box
-	// document.getElementById(globIdVar).style.pointerEvents = 'none';
+	//Add class answered to the div which will indicate if it has been clicked
+	$(globIdVar).addClass("answered");
+	
+	$(globIdVar).click(function(){
+		if($(this).hasClass("answered")){
+			// alert("Prevent Click");
+
+		}
+			// return false
+			// $(this).off();
+			// $(this).unbind("click");
+			// document.getElementById(this).onclick = null;
+			// document.getElementById(this).onclick = "#";
+	});
 
 	//J-QUERY
 	//J-query version to get the specifc box clicked id and make global var
