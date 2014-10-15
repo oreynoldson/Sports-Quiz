@@ -223,7 +223,7 @@ function question(question, choice1, choice2, choice3, choice4, answer, ansDescr
 /*CREATE AN ARRAY FOR NEW QUESTION OBJECTS*/
 var quiz = [{
 	//question 1 index = 0
-	question: "Track and field star Carl Lewis won how many gold medals at the 1984 Olympic games?",
+	question: "How many gold medals did track and field star Carl Lewis win at the 1984 Olympic Games?",
 	choice1: 2,
 	choice2: 3,
 	choice3: 4,
@@ -239,7 +239,7 @@ var quiz = [{
 	choice3: "Erick Dickerson",
 	choice4: "Jamal Lewis",
 	answer: "Erick Dickerson",
-	ansDescription: "Dickerson played in the NFL for 10 years and rushed for a career total of 13,000 yards with his single season record being 2,105 yards which he set in 1984 playing for the Los Angeles Rams."
+	ansDescription: "Dickerson played in the NFL for 10 years and rushed for a career total of 13,000 yards. His single season record was 2,105 yards, which he set in 1984 playing for the Los Angeles Rams."
 }, {
 	//question 3 index = 2
 	question: "Which former NBA player once scored 13 points in the last 35 seconds to win the game?",
@@ -251,26 +251,26 @@ var quiz = [{
 	ansDescription: "On December 9, 2004, McGrady scored 13 points in the last 35 seconds during a game against the San Antonio Spurs: four consecutive 3 pointers, including a steal and the game-winning 3 pointer with 1.7 seconds left that led to the 81-80 Rockets win."
 }, {
 	//question 4 index = 3
-	question: "Which country won the 2004 UEFA European Championships ?",
+	question: "Which country won the 2004 European Championships ?",
 	choice1: "Portugal",
 	choice2: "Greece",
 	choice3: "Germany",
 	choice4: "Spain",
 	answer: "Greece",
-	ansDescription: "On their way to winning the tournament they beat France, Czech Republic and Portugal  the hosts that year  who they beat by a score of 1 – 0 in the final."
+	ansDescription: "On their way to winning the tournament they beat France, Czech Republic and Portugal.  Portugal also were the hosts that year, and were beat by a score of 1 – 0 in the final."
 }, {
 	//question 5 index = 4
-	question: "Who was the first golfer since Jack Nicklaus to win eight PGA events his first six years on tour?",
+	question: "Who was the first golfer since Jack Nicklaus to win eight PGA events in his first six years on tour?",
 	choice1: "Phil Mickelson",
 	choice2: "Tiger Woods",
-	choice3: "Germany",
+	choice3: "Rory McIlroy",
 	choice4: "Greg Norman",
 	answer: "Phil Mickelson",
 	ansDescription: "Mickelson has won 42 events on the PGA Tour, including five major championships: three Masters titles (2004, 2006, 2010), a PGA Championship (2005), and an Open Championship (2013)."
 }, {
 	//question 6 index = 5
-	question: "In European rugby Leinster won a second straight Heineken Cup. What other club has one back-to-back European titles?",
-	choice1: "Tulon",
+	question: "In European rugby, Leinster won a second straight Heineken Cup. What other club has one back-to-back European titles?",
+	choice1: "Toulon",
 	choice2: "Leicester",
 	choice3: "Leinster",
 	choice4: "Stade Francais",
@@ -287,13 +287,13 @@ var quiz = [{
 	ansDescription: "Keenum played college football for the University of Houston becoming the NCAA's all-time leader in total passing yards, touchdowns, and completions."
 }, {
 	//question 8 index = 7
-	question: "Who was the oldest player to be on a premier league winning team?",
+	question: "Who was the oldest player to be on a Premier League winning team?",
 	choice1: "Ryan Giggs",
 	choice2: "Tony Adams",
-	choice3: "Edwin Van Der Sar",
+	choice3: "Edwin van der Sar",
 	choice4: "Peter Schmeichel",
 	answer: "Edwin Van Der Sar",
-	ansDescription: "In addition, he is also one of the few footballers to have won the UEFA Champions League with two different teams – with Ajax in 1995 and Manchester United in 2008."
+	ansDescription: "Additionally, he is also one of the few footballers to have won the UEFA Champions League with two different teams – with Ajax in 1995 and Manchester United in 2008."
 }, {
 	//question 9 index = 8
 	question: "Who was the highest earning athlete in 2014?",
