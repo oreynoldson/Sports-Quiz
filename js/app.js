@@ -6,13 +6,25 @@ $(document).ready(function(){
 
 	//Trigger the Instructions overlay
 	$(".instructions").click(function(){
-		$(".overlay").fadeIn(800);
+		$("#overlay").fadeIn(800);
 	});
 
 	//Hide instructions overlay
 	$(".exit").click(function(){
-		$(".overlay").fadeOut(1000);
+		$("#overlay").fadeOut(1000);
 		$(".answerReveal, .quizOverlay").fadeOut(400);
+	});
+
+
+	//use reload function to reload page in browser over redoing the 
+	//logic of the game to allow for the page to be cleared of 
+	//exisitng data
+	$(".newGame").click(function(){
+		location.reload(true);
+	});
+
+	$("#newGameButton").click(function(){
+		location.reload(true);
 	});
 
 /***********************************
@@ -20,36 +32,58 @@ $(document).ready(function(){
 ************************************/
 
 	//Display the question
-	//When the box is clicked call show question
+	//When the box is clicked call show the question
+	//if it has the class unanswered and call the function 
+	//to dislay the questions
 
-	document.getElementById("boxOne").onclick = showQuestion;
-	document.getElementById("boxTwo").onclick = showQuestion;
-	document.getElementById("boxThree").onclick = showQuestion;
-	document.getElementById("boxFour").onclick = showQuestion;
-	document.getElementById("boxFive").onclick = showQuestion;
-	document.getElementById("boxSix").onclick = showQuestion;
-	document.getElementById("boxSeven").onclick = showQuestion;
-	document.getElementById("boxEight").onclick = showQuestion;
-	document.getElementById("boxNine").onclick = showQuestion;
+	$(".quizGrid").on("click", ".unAnswered", function(){
+		//shows the question
+		$(".quizOverlay").fadeIn(800);
+		//inputs data from objects to show questions, choices etc..
+		lookForAvailableQuestion();
+		//toggles the class from answered to answered
+		$(this).toggleClass("unAnswered answered")
+		//gets box id -- need to make it a global variable
+		console.log($(this).attr("id"));
+		var boxId = $(this).attr("id");
+		globalBoxId = "#" + boxId;
+	});
+
+
 
 /***********************************
 	DISPLAY ANSWER
 ************************************/
 
 	//Display the answer
-	// $(".ans").click(function(){
-		// $(".answerReveal").fadeIn(200);
 		//Clicking on the choice calls the check answer function
 		//And displays the answer section
+		//possibly change to jQurey
 		document.getElementById("ansA").onclick = checkAnswer;
 		document.getElementById("ansB").onclick = checkAnswer;
 		document.getElementById("ansC").onclick = checkAnswer;
 		document.getElementById("ansD").onclick = checkAnswer;
-	// });
+
+
+/***********************************
+	CLEARS CONTAINERS OF PREVIOUS QUESTION
+************************************/
 
 	//clear the child nodes from the document
 	$("#exitQuestion").click(function(){
-		nextQuestion();
+		/*Makes sure the spaces for questions and answers are cleared*/
+		document.getElementById("question").innerHTML = " ";
+		//makes sure class dosent carry over to next section
+		$("#rightWrong").removeClass();
+		// nextQuestion();
+		console.log(quiz.length);
+		//once there are no more questions in the quiz array end game
+		if(quiz.length == 0){
+			globalScoreLength = globalScoreArray.length;
+			$("#endScore").text(globalScoreLength);
+			//displays end of game overlay
+			$("#endgameOverlay").show();
+		}
 	});
 
 /***********************************
@@ -61,56 +95,14 @@ $(document).ready(function(){
 
 	var scoreLength = scoreArray.length;
 	globalScoreLength = scoreLength;
+
 	
 });//End of document ready function
-
-
 
 
 /************************************************************
 	FUNCTIONS
 ************************************************************/
-
-/***********************************
-	FADE IN QUESTION / CALL FUNCTION
-	TO FIND QUESTION / STORE ID OF
-	BOX CLICKED ON IN GLOBAL VARIABLE
-************************************/
-
-//Display question and choices
-function showQuestion(){
-	$(".quizOverlay").fadeIn(800);
-	lookForAvailableQuestion();
-
-	//JAVASCRIPT
-	//stores the box clicked on ID in the variable
-	var getId = this.id;
-	//Makes the variable storing the id of box clicked on global
-	globIdVar = "#" + getId;
-
-	//ISSUE
-	//Work out how to disable the click function onclick for the box
-	//Add class answered to the div which will indicate if it has been clicked
-	$(globIdVar).addClass("answered");
-	
-	$(globIdVar).click(function(){
-		if($(this).hasClass("answered")){
-			// alert("Prevent Click");
-
-		}
-			// return false
-			// $(this).off();
-			// $(this).unbind("click");
-			// document.getElementById(this).onclick = null;
-			// document.getElementById(this).onclick = "#";
-	});
-
-	//J-QUERY
-	//J-query version to get the specifc box clicked id and make global var
-	// var boxClicked = $(this).attr("id");
-	//The id is stored as a string in the variable
-	// globalBoxId = "#" + boxClicked;
-}
 
 /***********************************
 	ADDS VALUES FROM OBJECTS TO HTML
@@ -160,18 +152,6 @@ function showQuestion(){
 	};//end of look for available question function
 
 /***********************************
-	CLEARS CONTAINERS OF PREVIOUS QUESTION
-************************************/
-
-	function nextQuestion(){
-		/*Makes sure the spaces for questions and answers are cleared*/
-		document.getElementById("question").innerHTML = " ";
-		//clears red or green class from right or wrong section
-		//makes sure class dosent carry over to next section
-		$("#rightWrong").removeClass();
-	};
-
-/***********************************
 	CHECKS ANSWER / FADES IN ANSWER
 	SECTION / CHANGE BOX STYLE 
 	DEPENDING ON ANSWER
@@ -195,15 +175,12 @@ function showQuestion(){
 			rightWrongId.className += " green";
 			//Iserts correct into HTML on results page
 			rightWrongId.innerHTML = "Correct";
-
 			//Adds green background to the box on correct answer
-			$(globIdVar).addClass("green-background");
+			$(globalBoxId).addClass("green-background");
 			//Removes the nested p with the class number to remove the number 
-			$(globIdVar).children(".number").remove();
+			$(globalBoxId).children(".number").remove();
 			//Adds a icon font to the remaining p below which add tick to box
-			$(globIdVar).children("p").addClass("icon-checkmark");
-			// $(globIdVar).children("p").addClass("icon-checkmark");
-			
+			$(globalBoxId).children("p").addClass("icon-checkmark");
 			//Push number to array to update score on correct answer
 			globalScoreArray.push(1);
 			globalScoreLength = globalScoreArray.length;
@@ -218,11 +195,11 @@ function showQuestion(){
 			//Inserts incorrect into HTML on results page
 			rightWrongId.innerHTML = "Incorrect";
 			//Adds red background to the box selected if incorrect
-			$(globIdVar).addClass("red-background");
+			$(globalBoxId).addClass("red-background");
 			//Removes the nested p with the class number to remove the number 
-			$(globIdVar).children(".number").remove();
+			$(globalBoxId).children(".number").remove();
 			//Adds a icon font to the remaining p below which add cross to box
-			$(globIdVar).children("p").addClass("icon-close");
+			$(globalBoxId).children("p").addClass("icon-close");
 		}//end if else statement
 	}//end check answer
 

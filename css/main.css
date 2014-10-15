@@ -101,7 +101,7 @@ header{
 	INSTRUCTIONS OVERLAY
 	********************/
 	/*Overlay for instructions*/
-	.overlay{
+	#overlay{
 		display: none;/*COMMENT OUT TO DISPLAY*/
 		position: absolute;
 		height: 550px;
@@ -155,6 +155,50 @@ header{
 		border-radius: 10px;
 		border: solid 2px white;
 	}
+
+
+	/*******************
+	END OF GAME OVERLAY
+	********************/
+	#endgameOverlay{
+		display: none;
+		position: absolute;
+		height: 550px;
+		width: 1225px;
+		top: 70px;
+		left: 70px;
+		background-color: #7647a2;
+		z-index: 150;
+		border-radius: 20px;
+	}
+
+	#endgameOverlay p{
+		font-size: 2em;
+	}
+
+	#endScore{
+		color: #ea8d70;
+	}
+	
+	/*Used an id to make sure didnt get buttons mixed up */
+	/*has same style as all other buttons though*/
+	#newGameButton{
+		text-decoration: none;
+		color: white;
+		background-color: black;
+		padding: 5px;
+		display: block;
+		width: 200px;
+		margin: 30px auto;
+		border-radius: 10px;
+	}
+
+	#newGameButton:hover{
+		cursor: pointer;
+		border-radius: 10px;
+		border: solid 2px white;
+	}
+
 
 
 /*******************
@@ -248,8 +292,28 @@ MIDDLE OF PAGE
 	left: 460px;	
 }
 
+.unAnswered{
+
+}
+
 .answered{
 
+}
+
+/*.correct{
+	
+}
+
+.incorrect{
+	
+}*/
+
+.green-background{
+	background-color: green;
+}
+
+.red-background{
+	background-color: red;
 }
 
 /*Used to test whether the icon fonts are working or not*/
@@ -268,16 +332,6 @@ MIDDLE OF PAGE
 	display: none;
 }*/
 
-
-/*Changes the background color for the boxes on right or wrong answers*/
-
-.green-background{
-	background-color: green;
-}
-
-.red-background{
-	background-color: red;
-}
 
 	/*******************
 	QUIZ OVERLAY

@@ -31,7 +31,7 @@
 			</ul>
 			
 			<!--Overlay for game instructions-->
-			<div class="overlay">
+			<div id="overlay">
 				<div class="overlayContent">
 					<h3>How To Play</h3>
 					<div>
@@ -42,6 +42,17 @@
 					</div>
 				</div><!--end overlay content-->
 			</div><!--end overlay-->
+			
+			<!--End of game overlay-->
+			<div id="endgameOverlay">
+				<div class="overlayContent">
+					<h3>Thanks for playing sports squares</h3>
+					<div>
+						<p>You scored <span id="endScore">2</span> out of 10</p>
+						<a id="newGameButton">New Game</a>
+					</div>
+				</div>
+			</div>
 
 		</header>
 
@@ -56,47 +67,47 @@
 			
 				<div class="quizGrid">
 
-					<div id ="boxOne" class="box">
+					<div id ="boxOne" class="box unAnswered">
 						<p class="number">1</p>
 						<p></p>
 					</div>
 
-					<div id ="boxTwo" class="box">
+					<div id ="boxTwo" class="box unAnswered">
 						<p class="number">2</p>
 						<p ></p>
 					</div>
 
-					<div id ="boxThree" class="box">
+					<div id ="boxThree" class="box unAnswered">
 						<p class="number">3</p>
 						<p></p>
 					</div>
 
-					<div id ="boxFour" class="box">
+					<div id ="boxFour" class="box unAnswered">
 						<p class="number">4</p>
 						<p></p>
 					</div>
 
-					<div id ="boxFive" class="box">
+					<div id ="boxFive" class="box unAnswered">
 						<p class="number">5</p>
 						<p></p>
 					</div>
 
-					<div id ="boxSix" class="box">
+					<div id ="boxSix" class="box unAnswered">
 						<p class="number">6</p>
 						<p></p>
 					</div>
 
-					<div id ="boxSeven" class="box">
+					<div id ="boxSeven" class="box unAnswered">
 						<p class="number">7</p>
 						<p></p>
 					</div>
 
-					<div id ="boxEight" class="box">
+					<div id ="boxEight" class="box unAnswered">
 						<p class="number">8</p>
 						<p></p>
 					</div>
 
-					<div id ="boxNine" class="box">
+					<div id ="boxNine" class="box unAnswered">
 						<p class="number">9</p>
 						<p></p>
 					</div>	
@@ -125,12 +136,6 @@
 					</div><!--end of quiz Overlay-->
 
 			</section><!--end of quiz grid container-->
-		
-			<!--SORT OUT SCORE OVERLAY-->
-			<div class="scoreOverlay">
-				<div class="scoreContainer">
-				</div>
-			</div><!--end of end quiz score container-->
 
 		</div><!--end of main container-->
 
